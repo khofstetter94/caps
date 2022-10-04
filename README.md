@@ -12,7 +12,7 @@ This will be an event driven application that “distributes” the responsibili
 
 ### Links and Resources
 
-- [ci/cd](http://xyz.com) (GitHub Actions)
+- [ci/cd](https://github.com/khofstetter94/caps/pull/1) (GitHub Actions)
 
 ### Setup
 
