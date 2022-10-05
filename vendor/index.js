@@ -1,7 +1,7 @@
 'use strict';
 
 const { io } = require('socket.io-client');
-const socket = io('http://localhost:3002'); // add namespace when created
+const socket = io('http://localhost:3002/caps'); // add namespace when created
 
 const Chance = require('chance');
 const chance = new Chance();
