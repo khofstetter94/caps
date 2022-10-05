@@ -7,10 +7,11 @@ const PORT = process.env.PORT || 3002;
 const server = new Server(PORT);
 
 // create namespace
+const caps = server.of('/caps');
 
 // connect to server
-server.on('connection', (socket) => {
-  console.log('Socket connected to Event Server!', socket.id);
+caps.on('connection', (socket) => {
+  console.log('Socket connected to CAPS namespace!', socket.id);
 
   socket.on('PICKUP', (payload) => {
     logEvent('pickup', payload);
