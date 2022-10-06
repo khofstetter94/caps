@@ -1,22 +1,26 @@
 'use strict';
 
 const { io } = require('socket.io-client');
-const socket = io('http://localhost:3002/caps'); // add namespace when created
-
-const Chance = require('chance');
-const chance = new Chance();
-
-const createPackageNotification = require('./newPackage');
 const vendorHandler = require('./vendorHandler');
-const newPackage = createPackageNotification(socket);
+const Chance = require('chance');
+const createPackageNotification = require('./newPackage');
 
-socket.on('DELIVERED', vendorHandler);
+function createVendor() {
+  const socket = io('http://localhost:3002/caps');
+  socket.on('DELIVERED', vendorHandler);
+  return socket;
+};
 
-setInterval(() => {
+function createVendorEvent(socket, store) {
+  const chance = new Chance();
+  const newPackage = createPackageNotification(socket);
+
   newPackage({
-    store: chance.company(),
+    store,
     orderID: chance.guid(),
     customer: chance.first(),
-    address: chance.address()
+    address: chance.address(),
   });
-}, 3000);
+}
+
+module.exports = { createVendor, createVendorEvent };

@@ -6,5 +6,5 @@ module.exports = (socket) => (payload) => {
   setTimeout(() => {
     console.log('delivered', payload.orderID);
     socket.emit('DELIVERED', payload);
-  }, 250);
+  }, 1000);
 };
